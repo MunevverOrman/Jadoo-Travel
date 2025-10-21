@@ -33,8 +33,8 @@ namespace JadooTravel.Services.IDestinationService
 
         public async Task<List<ResultDestinationDto>> GetAllDestinationAsync()
         {
-            var values = await _destinationCollection.Find(x => true).ToListAsync();
-            return _mapper.Map<List<ResultDestinationDto>>(values);
+            var value = await _destinationCollection.Find(x => true).ToListAsync(); //önce listeleme
+            return _mapper.Map<List<ResultDestinationDto>>(value); //sonra mapleme
         }
 
         public async Task <GetDestinationByIdDto>GetDestinationByIdAsync(string id)
