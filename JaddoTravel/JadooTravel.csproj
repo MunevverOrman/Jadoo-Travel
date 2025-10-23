@@ -7,6 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="wwwroot\Spike-Bootstrap-1.0.0\.vs\ProjectSettings.json" />
+    <Content Include="wwwroot\Spike-Bootstrap-1.0.0\.vs\Spike-Bootstrap-1.0.0\v17\DocumentLayout.json" />
+    <Content Include="wwwroot\Spike-Bootstrap-1.0.0\.vs\VSWorkspaceState.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Spike-Bootstrap-1.0.0\.vs\slnx.sqlite" />
+    <None Include="wwwroot\Spike-Bootstrap-1.0.0\.vs\Spike-Bootstrap-1.0.0\FileContentIndex\9bd5fe0e-703e-4eb6-b597-b4906c0c025a.vsidx" />
+    <None Include="wwwroot\Spike-Bootstrap-1.0.0\.vs\Spike-Bootstrap-1.0.0\v17\workspaceFileList.bin" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
     <PackageReference Include="MongoDB.Bson" Version="3.5.0" />

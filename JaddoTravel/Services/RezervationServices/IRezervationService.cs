@@ -4,7 +4,7 @@ namespace JadooTravel.Services.RezervationServices
 {
     public interface IRezervationService
     {
-        Task<List<ResultRezervationDto>> GetAllRezervationASync();
+        Task<List<ResultRezervationDto>> GetAllRezervationAsync();
 
         Task CreateRezervationAsync(CreateRezervationDto createRezervationDto);
 

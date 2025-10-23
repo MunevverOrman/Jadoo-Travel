@@ -32,7 +32,7 @@ namespace JadooTravel.Services.RezervationServices
             await _rezervationCollection.DeleteOneAsync(x=>x.RezervationId == id);
         }
 
-        public async Task<List<ResultRezervationDto>> GetAllRezervationASync()
+        public async Task<List<ResultRezervationDto>> GetAllRezervationAsync()
         {
            var value=await _rezervationCollection.Find(x=>true).ToListAsync();
             return _mapper.Map<List<ResultRezervationDto>>(value);

@@ -1,5 +1,9 @@
 using JadooTravel.Services.CategoryServices;
+using JadooTravel.Services.FeatureService;
 using JadooTravel.Services.IDestinationService;
+using JadooTravel.Services.RezervationServices;
+using JadooTravel.Services.TestimonialServices;
+using JadooTravel.Services.TripPlanServices;
 using JadooTravel.Settings;
 using Microsoft.CodeAnalysis.Options;
 using Microsoft.Extensions.Options;
@@ -10,6 +14,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddScoped<ICategoryService , CategoryService>();
 builder.Services.AddScoped<IDestinationService,DestinationService>();
+builder.Services.AddScoped<IFeatureService , FeatureService>();
+builder.Services.AddScoped<IRezervationService, RezervationService>();
+builder.Services.AddScoped<ITestimonialService, TestimonialService>();
+builder.Services.AddScoped<ITripPlanService,TripPlanService>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettingsKey"));
