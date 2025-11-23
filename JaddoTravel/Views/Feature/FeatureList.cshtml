@@ -1,0 +1,32 @@
+﻿@model List<ResultFeatureDto>
+@{
+    ViewData["Title"] = "FeatureList";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<h3>FeatureList</h3>
+
+<table class="table table-bordered">
+	<tr>
+		<th>#</th>
+		<th>Başlık</th>
+		<th>Ana Başlık</th>
+		<th>Açıklama</th>
+		<th>Video Url</th>
+		<th>Sil</th>
+		<th>Güncelle</th>
+	</tr>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>@item.FeatureId</td>
+			<td>@item.Title</td>
+			<td>@item.MainTitle</td>
+			<td>@item.Description</td>
+			<td>@item.VideoUrl</td>
+			<td><a href="/Feature/DeleteFeature/@item.FeatureId" class="btn btn-danger">Sil</a></td>
+			<td><a href="/Feature/UpdateFeature/@item.FeatureId" class="btn btn-success">Güncelle</a></td>
+		</tr>
+	}
+</table>
+<a href="/Feature/CreateFeature/" class="btn btn-info">Yeni Başlık Girişi</a>
