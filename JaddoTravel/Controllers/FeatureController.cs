@@ -15,7 +15,7 @@ namespace JadooTravel.Controllers
 
         public async Task<IActionResult> FeatureList()
         {
-            var value=await _featureService.GetAllFeatureasync();
+            var value=await _featureService.GetAllFeatureAsync();
             return View(value);
         }
         [HttpGet]

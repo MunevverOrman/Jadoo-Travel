@@ -22,7 +22,7 @@ namespace JadooTravel.Services.CategoryServices
 
         public async Task CreateCategoryAsync(CreateCategoryDto createCategoryDto)
         {
-           var value = _mapper.Map<Category>(createCategoryDto);
+           var value = _mapper.Map<Category>(createCategoryDto);//Create ve Update de önce mapleme sonra işlem.CategoryDto Category Sınıfına maplendi.önce sınıf sonra dto yazıldı.
            await _categoryCollection.InsertOneAsync(value); //MongoDB'ye ekleme işlemi
         }
 
@@ -33,8 +33,8 @@ namespace JadooTravel.Services.CategoryServices
 
         public async Task<List<ResultCategoryDto>> GetAllCategoryAsync()
         {
-            var values = await _categoryCollection.Find(x => true).ToListAsync();
-            return _mapper.Map<List<ResultCategoryDto>>(values);
+            var values = await _categoryCollection.Find(x => true).ToListAsync();//Bir şart olmadan hepsini getirir.
+            return _mapper.Map<List<ResultCategoryDto>>(values);//önce dto sonra sınıf yazıldı.
         }
 
 

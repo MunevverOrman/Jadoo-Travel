@@ -1,0 +1,257 @@
+﻿@model JadooTravel.Models.StatisticsViewModel
+@{
+    ViewData["Title"] = "İstatistikler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="mb-4">İstatistikler</h2>
+
+<div class="row">
+    <div class="col-lg-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body" style="height: 360px;">
+                <h4 class="card-title mb-3">Turların Kapasitesi & Ücretleri</h4>
+                <canvas id="tourChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-lg-6 mb-4">
+        <div class="row h-100">
+
+            <div class="col-12 mb-4">
+                <div class="card h-100">
+                    <div class="card-body" style="height: 170px;">
+                        <h4 class="card-title mb-3">En Pahalı 5 Lokasyon</h4>
+                        <canvas id="topPriceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-12">
+                <div class="card h-100">
+                    <div class="card-body" style="height: 170px;">
+                        <h4 class="card-title mb-3">En Yüksek Kapasiteli 5 Lokasyon</h4>
+                        <canvas id="topCapacityChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-4">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-3">Son Eklenen 5 Tur</h4>
+
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead>
+                            <tr>
+                                <th>Tur</th>
+                                <th>Gün / Gece</th>
+                                <th>Kapasite</th>
+                                <th>Fiyat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model?.LastDestinations != null && Model.LastDestinations.Any())
+                            {
+                                foreach (var item in Model.LastDestinations)
+                                {
+                                    <tr>
+                                        <td>@item.CityCountry</td>
+                                        <td>@item.DayNight</td>
+                                        <td>@item.Capacity</td>
+                                        <td>@item.Price ₺</td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="4" class="text-center text-muted">
+                                        Henüz tur eklenmemiş.
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-4">
+    <div class="col-lg-12">
+    
+    </div>
+
+    @if (Model?.LastDestinationsForCards != null && Model.LastDestinationsForCards.Any())
+    {
+        foreach (var item in Model.LastDestinationsForCards)
+        {
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="@item.ImageUrl" class="card-img-top" alt="@item.CityCountry" style="height: 160px; object-fit: cover;" />
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title mb-2">@item.CityCountry</h5>
+                        <p class="mb-1 text-muted">@item.DayNight</p>
+                        <p class="fw-semibold mb-3">@item.Price ₺</p>
+
+                        <div class="mt-auto">
+                            <span class="badge bg-primary-subtle text-primary">
+                                Kapasite: @item.Capacity
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="col-lg-12">
+            <div class="alert alert-warning mb-0">
+                Henüz kartlar için gösterilecek tur bulunamadı.
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        fetch('/Statistics/GetDestinationChart')
+            .then(response => response.json())
+            .then(data => {
+                const labels = data.map(x => x.label);
+                const capacities = data.map(x => x.capacity);
+                const prices = data.map(x => x.price);
+
+                const ctx = document.getElementById('tourChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar', 
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                type: 'bar',
+                                label: 'Kapasite',
+                                data: capacities,
+                                backgroundColor: 'rgba(54, 162, 235, 0.6)'
+                            },
+                            {
+                                type: 'line',
+                                label: 'Fiyat',
+                                data: prices,
+                                borderColor: 'rgba(255, 99, 132, 1)',
+                                backgroundColor: 'rgba(255, 99, 132, 0.3)',
+                                tension: 0.3,
+                                fill: true,
+                                yAxisID: 'y1'
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Kapasite'
+                                }
+                            },
+                            y1: {
+                                beginAtZero: true,
+                                position: 'right',
+                                grid: {
+                                    drawOnChartArea: false
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Fiyat'
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+
+
+        fetch('/Statistics/GetTopDestinationsChart')
+            .then(response => response.json())
+            .then(data => {
+                const labels = data.map(x => x.label);
+                const values = data.map(x => x.value);
+
+                const ctx2 = document.getElementById('topPriceChart').getContext('2d');
+                new Chart(ctx2, {
+                    type: 'doughnut',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            data: values,
+                            backgroundColor: [
+                                'rgba(75, 192, 192, 0.8)',
+                                'rgba(255, 159, 64, 0.8)',
+                                'rgba(153, 102, 255, 0.8)',
+                                'rgba(255, 205, 86, 0.8)',
+                                'rgba(54, 162, 235, 0.8)'
+                            ]
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '60%',
+                        plugins: {
+                            legend: {
+                                position: 'right'
+                            }
+                        }
+                    }
+                });
+            });
+
+
+        fetch('/Statistics/GetTopCapacityDestinationsChart')
+            .then(response => response.json())
+            .then(data => {
+                const labels = data.map(x => x.label);
+                const values = data.map(x => x.value);
+
+                const ctx3 = document.getElementById('topCapacityChart').getContext('2d');
+                new Chart(ctx3, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: 'Kapasite',
+                                data: values,
+                                backgroundColor: 'rgba(99, 132, 255, 0.7)'
+                            }
+                        ]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            });
+    </script>
+}

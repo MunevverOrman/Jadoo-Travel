@@ -10,5 +10,7 @@
         public string RezervationCollectionName { get; set; }
         public string FeatureCollectionName { get; set; }
         public string TripPlanCollectionName { get; set; }
+        public string ServiceCollectionName { get; set; }
+
     }
 }

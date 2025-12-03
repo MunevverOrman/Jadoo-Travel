@@ -1,0 +1,240 @@
+﻿@using JadooTravel
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
+
+<section class="pt-6">
+
+    <style>
+        /* Stil kodların aynı bırakıldı */
+        .ai-bg {
+            position: relative;
+            border-radius: 129px 20px 20px 20px;
+            overflow: hidden;
+            background: none;
+        }
+
+            .ai-bg::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: url('/public/assets/img/partner/location-pattern.jpg') repeat;
+                background-size: 150px;
+                opacity: 0.2;
+                z-index: 0;
+            }
+
+            .ai-bg > * {
+                position: relative;
+                z-index: 2;
+            }
+
+            .ai-bg h2 {
+                font-size: 2rem;
+                font-weight: 700;
+                color: #2b2b40 !important;
+            }
+
+            .ai-bg p {
+                font-size: 1rem !important;
+                color: #4f4f5f !important;
+                font-weight: 400;
+            }
+
+        .ai-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: rgba(255,137,93,.2);
+            color: #ff5f2e;
+            font-size: .85rem;
+            font-weight: 500;
+        }
+
+        .ai-badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ff6a3d;
+        }
+
+        #cityInput {
+            height: 48px;
+            border: 2px solid #dedede;
+            font-size: 1rem;
+            background: #ffffffd9;
+            font-weight: 500;
+            border-radius: 10px;
+        }
+
+            #cityInput::placeholder {
+                color: #7a7a8f !important;
+                font-weight: 400;
+            }
+
+        #aiCityForm button {
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            box-shadow: 0 4px 14px rgba(255,100,60,.25);
+        }
+
+        .ai-popup-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15,23,42,.45);
+            z-index: 9999;
+            display: none;
+        }
+
+        .ai-popup-dialog {
+            max-width: 900px;
+            width: 92%;
+            max-height: 80vh;
+            margin: 5% auto;
+            background: #fff;
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 24px 60px rgba(15,23,42,.25);
+            position: relative;
+            overflow: auto;
+        }
+
+        .ai-popup-close {
+            position: absolute;
+            top: 10px;
+            right: 16px;
+            background: none;
+            border: 0;
+            font-size: 24px;
+            cursor: pointer;
+            color: #64748b;
+        }
+
+        .ai-popup-title {
+            margin: 8px 32px 16px 0;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #0f172a;
+        }
+
+        .ai-popup-body {
+            white-space: pre-wrap;
+            font-size: .95rem;
+            line-height: 1.6;
+            color: #1f2933;
+        }
+    </style>
+
+    <div class="container">
+        <div class="py-8 px-5 position-relative text-center ai-bg">
+
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10">
+
+                    <div class="mb-3">
+                        <span class="ai-badge">
+                            <span class="ai-badge-dot"></span>
+                            @Localizer["AiBadgeText"]
+                        </span>
+                    </div>
+
+                    <h2 class="lh-1-7 mb-2">
+                        @Localizer["AiTitle"]
+                    </h2>
+
+                    <p class="mb-5">
+                        @Localizer["AiSubtitle"]
+                    </p>
+
+                    <form id="aiCityForm" class="row g-3 align-items-center w-lg-75 mx-auto">
+                        <div class="col-sm">
+                            <div class="input-group-icon">
+                                <input class="form-control form-little-squirrel-control"
+                                       type="text"
+                                       id="cityInput"
+                                       name="city"
+                                       placeholder="@Localizer["AiCityPlaceholder"]"
+                                       aria-label="city" />
+                                <img class="input-box-icon"
+                                     src="/public/assets/img/cta/mail.svg"
+                                     width="17" alt="city icon" />
+                            </div>
+                        </div>
+                        <div class="col-sm-auto">
+                            <button type="submit" class="btn btn-danger orange-gradient-btn fs--1">
+                                @Localizer["AiButtonText"]
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="aiPopupOverlay" class="ai-popup-overlay">
+        <div class="ai-popup-dialog">
+            <button type="button" id="closeAiPopup" class="ai-popup-close">×</button>
+            <h5 id="aiPopupTitle" class="ai-popup-title">@Localizer["AiPopupTitleDefault"]</h5>
+            <div id="aiPopupBody" class="ai-popup-body"></div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            var form = document.getElementById('aiCityForm');
+            var cityInput = document.getElementById('cityInput');
+            var overlay = document.getElementById('aiPopupOverlay');
+            var closeBtn = document.getElementById('closeAiPopup');
+            var titleEl = document.getElementById('aiPopupTitle');
+            var bodyEl = document.getElementById('aiPopupBody');
+
+            if (!form) return;
+
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                var city = cityInput.value.trim();
+                if (!city) {
+                    alert('@Localizer["AiAlertEmptyCity"]');
+                    return;
+                }
+
+                overlay.style.display = 'block';
+                titleEl.textContent = city + ' @Localizer["AiLoadingSuffix"]';
+                bodyEl.textContent = '@Localizer["AiLoadingText"]';
+
+                try {
+                    const response = await fetch('/AI/CityGuideAjax', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ city: city })
+                    });
+
+                    const data = await response.json();
+
+                    if (!data.success) {
+                        bodyEl.textContent = data.message || '@Localizer["AiErrorGeneric"]';
+                        return;
+                    }
+
+                    titleEl.textContent = data.city + ' @Localizer["AiPopupTitleSuffix"]';
+                    bodyEl.textContent = data.result;
+
+                } catch (err) {
+                    bodyEl.textContent = '@Localizer["AiServerError"]';
+                }
+            });
+
+            closeBtn.addEventListener('click', () => overlay.style.display = 'none');
+            overlay.addEventListener('click', e => {
+                if (e.target === overlay)
+                    overlay.style.display = 'none';
+            });
+        })();
+    </script>
+
+</section>

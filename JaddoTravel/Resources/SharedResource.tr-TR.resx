@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BookingSectionSubtitle" xml:space="preserve">
+    <value>3 Adımda Rezervasyonunuzu Tamamlayın</value>
+  </data>
+  <data name="BookingSectionTitle" xml:space="preserve">
+    <value>Kolay ve Hızlı Rezervasyon</value>
+  </data>
+  <data name="BookingStep1Text" xml:space="preserve">
+    <value>Hayalindeki şehri veya ülkeyi seç. Dünyanın neresine gitmek istersen seni oraya götürüyoruz.</value>
+  </data>
+  <data name="BookingStep1Title" xml:space="preserve">
+    <value>1. Rota Seç</value>
+  </data>
+  <data name="BookingStep2Text" xml:space="preserve">
+    <value>Seçtiğin turu onayla, güvenli ödeme adımını tamamla ve seyahatin için hazırlanmaya başla</value>
+  </data>
+  <data name="BookingStep3Title" xml:space="preserve">
+    <value>3. Havalimanına Ulaş</value>
+  </data>
+  <data name="CategorySectionSubtitle" xml:space="preserve">
+    <value>Sizlere En İyi Hizmetleri Sunuyoruz</value>
+  </data>
+  <data name="CategorySectionTitle" xml:space="preserve">
+    <value>Kategoriler</value>
+  </data>
+  <data name="DestinationSectionSubtitle" xml:space="preserve">
+    <value>En sevilen tur rotaları</value>
+  </data>
+  <data name="DestinationSectionTitle" xml:space="preserve">
+    <value>Popüler rotalar</value>
+  </data>
+  <data name="DiscoverRoutes" xml:space="preserve">
+    <value>Rotaları Keşfet</value>
+  </data>
+  <data name="HeroDescription" xml:space="preserve">
+    <value>Macera dolu bir yolculuğa çıkmak için doğru yerdesiniz. Şehir ışıklarından tropik sahillere, dağ köylerinden kültürel miraslara kadar sizi bekleyen yüzlerce deneyim var.</value>
+  </data>
+  <data name="HeroMainTitle" xml:space="preserve">
+    <value>Seyahat edin, keşfedin</value>
+  </data>
+  <data name="HeroSmallTitle" xml:space="preserve">
+    <value>Dünyanın En Büyüleyici Rotalarını Keşfedin</value>
+  </data>
+  <data name="Key tr-TR (Türkçe) en-US (English) fr-FR (Français)" xml:space="preserve">
+    <value>2. Ödeme Yap</value>
+  </data>
+  <data name="MenuContact" xml:space="preserve">
+    <value>Bize Yazın</value>
+  </data>
+  <data name="MenuLocations" xml:space="preserve">
+    <value>Lokasyonlar</value>
+  </data>
+  <data name="MenuLogin" xml:space="preserve">
+    <value>Giriş Yap</value>
+  </data>
+  <data name="MenuRegister" xml:space="preserve">
+    <value>Kayıt Ol</value>
+  </data>
+  <data name="MenuReservation" xml:space="preserve">
+    <value>Rezervasyon</value>
+  </data>
+  <data name="MenuServices" xml:space="preserve">
+    <value>Hizmetlerimiz</value>
+  </data>
+  <data name="WatchVideo" xml:space="preserve">
+    <value>Tanıtım Videosu</value>
+  </data>
+	<!-- NAVBAR -->
+	<data name="MenuServices" xml:space="preserve">
+    <value>Hizmetlerimiz</value>
+  </data>
+	<data name="MenuLocations" xml:space="preserve">
+    <value>Lokasyonlar</value>
+  </data>
+	<data name="MenuReservation" xml:space="preserve">
+    <value>Rezervasyon</value>
+  </data>
+	<data name="MenuContact" xml:space="preserve">
+    <value>Bize Yazın</value>
+  </data>
+	<data name="MenuLogin" xml:space="preserve">
+    <value>Giriş Yap</value>
+  </data>
+	<data name="MenuRegister" xml:space="preserve">
+    <value>Kayıt Ol</value>
+  </data>
+
+	<!-- HERO -->
+	<data name="HeroSmallTitle" xml:space="preserve">
+    <value>Dünyanın En Büyüleyici Rotalarını Keşfedin</value>
+  </data>
+	<data name="HeroMainTitle" xml:space="preserve">
+    <value>Seyahat edin, keşfedin</value>
+  </data>
+	<data name="HeroDescription" xml:space="preserve">
+    <value>Macera dolu bir yolculuğa çıkmak için doğru yerdesiniz. Şehir ışıklarından tropik sahillere, dağ köylerinden kültürel miraslara kadar sizi bekleyen yüzlerce deneyim var.</value>
+  </data>
+	<data name="DiscoverRoutes" xml:space="preserve">
+    <value>Rotaları Keşfet</value>
+  </data>
+	<data name="WatchVideo" xml:space="preserve">
+    <value>Tanıtım Videosu</value>
+  </data>
+
+	<!-- CATEGORY SECTION -->
+	<data name="CategorySectionTitle" xml:space="preserve">
+    <value>Kategoriler</value>
+  </data>
+	<data name="CategorySectionSubtitle" xml:space="preserve">
+    <value>Sizlere En İyi Hizmetleri Sunuyoruz</value>
+  </data>
+
+	<!-- DESTINATION SECTION -->
+	<data name="DestinationSectionTitle" xml:space="preserve">
+    <value>Popüler rotalar</value>
+  </data>
+	<data name="DestinationSectionSubtitle" xml:space="preserve">
+    <value>En sevilen tur rotaları</value>
+  </data>
+
+	<!-- BOOKING / STEPS SECTION -->
+	<data name="BookingSectionTitle" xml:space="preserve">
+    <value>Kolay ve Hızlı Rezervasyon</value>
+  </data>
+	<data name="BookingSectionSubtitle" xml:space="preserve">
+    <value>3 Adımda Rezervasyonunuzu Tamamlayın</value>
+  </data>
+
+	<data name="BookingStep1Title" xml:space="preserve">
+    <value>1. Rota Seç</value>
+  </data>
+	<data name="BookingStep1Text" xml:space="preserve">
+    <value>Hayalindeki şehri veya ülkeyi seç. Dünyanın neresine gitmek istersen seni oraya götürüyoruz.</value>
+  </data>
+
+	<data name="BookingStep2Title" xml:space="preserve">
+    <value>2. Ödeme Yap</value>
+  </data>
+	<data name="BookingStep2Text" xml:space="preserve">
+    <value>Seçtiğin turu onayla, güvenli ödeme adımını tamamla ve seyahatin için hazırlanmaya başla.</value>
+  </data>
+
+	<data name="BookingStep3Title" xml:space="preserve">
+    <value>3. Havalimanına Ulaş</value>
+  </data>
+	<data name="BookingStep3Text" xml:space="preserve">
+    <value>Uçuş gününde havalimanında ol, geri kalan her şeyi sana unutulmaz bir tatil yaşatmak için biz halledelim.</value>
+  </data>
+
+	<!-- BOOKING FORM -->
+	<data name="BookingFormTitle" xml:space="preserve">
+    <value>Hızlı Rezervasyon Formu</value>
+  </data>
+	<data name="BookingFormSubtitle" xml:space="preserve">
+    <value>Bilgilerinizi bırakın, size en kısa sürede dönüş yapalım.</value>
+  </data>
+
+	<data name="BookingFormNameLabel" xml:space="preserve">
+    <value>Ad Soyad</value>
+  </data>
+	<data name="BookingFormNamePlaceholder" xml:space="preserve">
+    <value>Adınızı ve soyadınızı giriniz</value>
+  </data>
+
+	<data name="BookingFormPhoneLabel" xml:space="preserve">
+    <value>Telefon</value>
+  </data>
+	<data name="BookingFormPhonePlaceholder" xml:space="preserve">
+    <value>0 5xx xxx xx xx</value>
+  </data>
+
+	<data name="BookingFormEmailLabel" xml:space="preserve">
+    <value>E-posta</value>
+  </data>
+	<data name="BookingFormEmailPlaceholder" xml:space="preserve">
+    <value>ornek@mail.com</value>
+  </data>
+
+	<data name="BookingFormRequestLabel" xml:space="preserve">
+    <value>Talebiniz</value>
+  </data>
+	<data name="BookingFormRequestPlaceholder" xml:space="preserve">
+    <value>Gitmek istediğiniz tarih, kişi sayısı vb. bilgileri yazabilirsiniz...</value>
+  </data>
+
+	<data name="BookingFormButton" xml:space="preserve">
+    <value>Talebimi Gönder</value>
+  </data>
+	<data name="TestimonialsSectionTitle" xml:space="preserve">
+    <value>Görüşler</value>
+  </data>
+	<data name="TestimonialsSectionSubtitle" xml:space="preserve">
+    <value>Müşteri Görüşleri</value>
+  </data>
+	<data name="TestimonialsEmptyMessage" xml:space="preserve">
+    <value>Henüz sistemde kayıtlı müşteri görüşü bulunmuyor.</value>
+  </data>
+	<data name="PartnerSectionTitle" xml:space="preserve">
+    <value>İş Ortaklarımız</value>
+  </data>
+	<data name="PartnerSectionSubtitle" xml:space="preserve">
+    <value>Güvenilir markalarla çalışıyoruz</value>
+  </data>
+	<data name="AiBadgeText" xml:space="preserve"><value>AI Seyahat Asistanı</value></data>
+	<data name="AiTitle" xml:space="preserve"><value>Nereye gitmek istiyorsun?</value></data>
+	<data name="AiSubtitle" xml:space="preserve"><value>Şehri yaz, AI senin için gezilecek yerleri ve kısa açıklamalarını anında hazırlasın.</value></data>
+	<data name="AiCityPlaceholder" xml:space="preserve"><value>Örn: Paris, Kapadokya, Roma...</value></data>
+	<data name="AiButtonText" xml:space="preserve"><value>Rotaları getir</value></data>
+	<data name="AiPopupTitleDefault" xml:space="preserve"><value>Gezilecek yerler</value></data>
+	<data name="AiAlertEmptyCity" xml:space="preserve"><value>Lütfen bir şehir giriniz.</value></data>
+	<data name="AiLoadingSuffix" xml:space="preserve"><value>için öneriler yükleniyor...</value></data>
+	<data name="AiLoadingText" xml:space="preserve"><value>Lütfen bekleyin...</value></data>
+	<data name="AiPopupTitleSuffix" xml:space="preserve"><value>şehrinde gezilecek yerler</value></data>
+	<data name="AiErrorGeneric" xml:space="preserve"><value>Bir hata oluştu.</value></data>
+	<data name="AiServerError" xml:space="preserve"><value>Sunucuya ulaşılamadı.</value></data>
+	<data name="FooterIntroText" xml:space="preserve"><value>Dakikalar içinde seyahatini planla, geri kalanını bize bırak.</value></data>
+	<data name="FooterCompanyTitle" xml:space="preserve"><value>Kurumsal</value></data>
+	<data name="FooterCompanyAbout" xml:space="preserve"><value>Hakkımızda</value></data>
+	<data name="FooterCompanyCareers" xml:space="preserve"><value>Kariyer</value></data>
+	<data name="FooterCompanyMobile" xml:space="preserve"><value>Mobil Uygulama</value></data>
+	<data name="FooterContactTitle" xml:space="preserve"><value>İletişim</value></data>
+	<data name="FooterContactHelp" xml:space="preserve"><value>Yardım / SSS</value></data>
+	<data name="FooterContactPress" xml:space="preserve"><value>Basın</value></data>
+	<data name="FooterContactAffiliate" xml:space="preserve"><value>İş Ortaklığı</value></data>
+	<data name="FooterMoreTitle" xml:space="preserve"><value>Daha Fazlası</value></data>
+	<data name="FooterMoreAirlineFees" xml:space="preserve"><value>Hava yolu ücretleri</value></data>
+	<data name="FooterMoreAirline" xml:space="preserve"><value>Hava yolu firmaları</value></data>
+	<data name="FooterMoreLowFareTips" xml:space="preserve"><value>Uygun fiyat ipuçları</value></data>
+	<data name="FooterDiscoverApp" xml:space="preserve"><value>Mobil uygulamamızı keşfedin</value></data>
+	<data name="FooterRights" xml:space="preserve"><value>Tüm hakları saklıdır © jadoo.co</value></data>
+	<data name="SiteTitle" xml:space="preserve">
+  <value>Jadoo MongoDB Seyahat Projesi</value>
+</data>
+
+</root>

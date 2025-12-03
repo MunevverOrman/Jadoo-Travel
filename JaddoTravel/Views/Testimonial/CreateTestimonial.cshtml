@@ -1,0 +1,18 @@
+﻿@model JadooTravel.Dtos.TestimonialDtos.CreateTestimonialDto
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <h4>Yeni Müşteri Görüşü Ekle</h4>
+    <form method="post">
+        <input type="text" asp-for="NameSurname" class="form-control" placeholder="Ad Soyad" />
+        <br />
+        <textarea asp-for="Comment" class="form-control" placeholder="Yorum"></textarea>
+        <br />
+        <input type="text" asp-for="ImageUrl" class="form-control" placeholder="Görsel URL" />
+        <br />
+
+        <button class="btn btn-primary">Kaydet</button>
+    </form>
+</div>

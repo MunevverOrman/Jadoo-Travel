@@ -4,7 +4,7 @@ namespace JadooTravel.Services.FeatureService
 {
     public interface IFeatureService
     {
-        Task<List<ResultFeatureDto>> GetAllFeatureasync();
+        Task<List<ResultFeatureDto>> GetAllFeatureAsync();
 
         Task CreateFeatureAsync(CreateFeatureDto createFeatureDto);
 
