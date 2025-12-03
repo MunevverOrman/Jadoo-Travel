@@ -1,0 +1,122 @@
+﻿@model List<JadooTravel.Dtos.RezervationDtos.ResultRezervationDto>
+@{
+    ViewData["Title"] = "Rezervasyonlar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0 fw-semibold">Rezervasyon Talepleri</h5>
+                <span class="badge bg-primary">
+                    Toplam: @Model?.Count
+                </span>
+            </div>
+
+            <div class="card-body table-responsive">
+                <table class="table table-striped table-bordered align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Ad Soyad</th>
+                            <th>Telefon</th>
+                            <th>E-posta</th>
+                            <th>Not</th>
+                            <th style="width: 140px;">İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            var i = 1;
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@i</td>
+                                    <td>@item.NameSurname</td>
+                                    <td>@item.Phone</td>
+                                    <td>@item.Email</td>
+                                    <td>
+                                        @if (!string.IsNullOrEmpty(item.Description) && item.Description.Length > 60)
+                                        {
+                                            @item.Description.Substring(0, 60)
+
+                                            <button type="button"
+                                                    class="btn btn-sm btn-outline-primary ms-2"
+                                                    data-note="@item.Description"
+                                                    onclick="showNoteDetail(this.dataset.note)">
+                                                Detay
+                                            </button>
+                                        }
+                                        else
+                                        {
+                                            @item.Description
+                                        }
+                                    </td>
+                                    <td>
+                                        <div class="d-flex gap-2">
+                                            <a asp-controller="Rezervation"
+                                               asp-action="UpdateRezervation"
+                                               asp-route-id="@item.RezervationId"
+                                               class="btn btn-sm btn-info">
+                                                Düzenle
+                                            </a>
+
+                                            <a onclick="confirmDelete('@item.RezervationId')"
+                                               class="btn btn-sm btn-danger text-white">
+                                                Sil
+                                            </a>
+                                        </div>
+                                    </td>
+
+                                </tr>
+                                i++;
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6" class="text-center text-muted">
+                                    Henüz sistemde kayıtlı bir rezervasyon talebi bulunmuyor.
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    function confirmDelete(id) {
+        Swal.fire({
+            title: "Silmek istediğine emin misin?",
+            text: "Bu işlem geri alınamaz!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#e74c3c",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Evet, sil",
+            cancelButtonText: "Vazgeç"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/Rezervation/DeleteRezervation?id=" + id;
+            }
+        });
+    }
+        function showNoteDetail(note) {
+        Swal.fire({
+            title: "Not Detayı",
+            html: `<div style="text-align:left; font-size:15px;">${note}</div>`,
+            icon: "info",
+            confirmButtonText: "Tamam",
+            width: 600
+        });
+    }
+
+</script>

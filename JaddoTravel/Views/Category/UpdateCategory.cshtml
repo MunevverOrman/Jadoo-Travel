@@ -1,20 +1,46 @@
 ﻿@model JadooTravel.Dtos.CategoryDtos.GetCategoryByIdDto
-   
+
 @{
-Layout = null;
+    ViewData["Title"] = "Kategori Güncelle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+<div class="row mt-4">
+    <div class="col-lg-6 col-md-8 col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0 fw-semibold">Kategori Güncelle</h5>
+            </div>
+            <div class="card-body">
+                <form asp-action="UpdateCategory" asp-controller="Category" method="post">
+                    <input type="hidden" asp-for="CategoryId" />
 
-<Link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-<div class="container">
-    <br /><br />
-    <form method="post">
-        <input type="hidden" asp-for="CategoryId"/>
-        <input type="text" asp-for="CategoryName" placeholder="Kategori adını giriniz" class="form-control" />
-        <br />
-        <button class="btn btn-success">kategoriyi güncelle</button>
+                    <div class="mb-3">
+                        <label asp-for="CategoryName" class="form-label">Kategori Adı</label>
+                        <input asp-for="CategoryName" class="form-control" />
+                    </div>
 
+                    <div class="mb-3">
+                        <label asp-for="Description" class="form-label">Açıklama</label>
+                        <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                    </div>
 
-    </form>
+                    <div class="mb-3">
+                        <label asp-for="IconUrl" class="form-label">Icon Url</label>
+                        <input asp-for="IconUrl" class="form-control" />
+                        @if (!string.IsNullOrWhiteSpace(Model.IconUrl))
+                        {
+                            <div class="mt-2">
+                                <span class="text-muted">Mevcut ikon:</span><br />
+                                <img src="@Model.IconUrl" alt="@Model.CategoryName" width="50" />
+                            </div>
+                        }
+                    </div>
 
+                    <button type="submit" class="btn btn-success">Kategoriyi Güncelle</button>
+                    <a asp-controller="Category" asp-action="CategoryList" class="btn btn-secondary ms-2">Geri Dön</a>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

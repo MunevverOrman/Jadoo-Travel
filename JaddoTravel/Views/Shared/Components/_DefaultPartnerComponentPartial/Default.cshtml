@@ -1,0 +1,54 @@
+﻿@using JadooTravel
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
+
+<div class="position-relative pt-9 pt-lg-8 pb-6 pb-lg-8">
+    <div class="container">
+
+        <div class="mb-5 text-center">
+            <h5 class="text-secondary">
+                @Localizer["PartnerSectionTitle"]
+            </h5>
+            <h3 class="fs-xl-8 fs-lg-7 fs-6 fw-bold font-cursive text-capitalize">
+                @Localizer["PartnerSectionSubtitle"]
+            </h3>
+        </div>
+
+        <div class="row row-cols-lg-5 row-cols-md-3 row-cols-2 flex-center">
+            <div class="col">
+                <div class="card shadow-hover mb-4" style="border-radius:10px;">
+                    <div class="card-body text-center">
+                        <img class="img-fluid" src="/public/assets/img/partner/1.png" alt="partner-logo-1" />
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow-hover mb-4" style="border-radius:10px;">
+                    <div class="card-body text-center">
+                        <img class="img-fluid" src="/public/assets/img/partner/2.png" alt="partner-logo-2" />
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow-hover mb-4" style="border-radius:10px;">
+                    <div class="card-body text-center">
+                        <img class="img-fluid" src="/public/assets/img/partner/3.png" alt="partner-logo-3" />
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow-hover mb-4" style="border-radius:10px;">
+                    <div class="card-body text-center">
+                        <img class="img-fluid" src="/public/assets/img/partner/4.png" alt="partner-logo-4" />
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow-hover mb-4" style="border-radius:10px;">
+                    <div class="card-body text-center">
+                        <img class="img-fluid" src="/public/assets/img/partner/5.png" alt="partner-logo-5" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

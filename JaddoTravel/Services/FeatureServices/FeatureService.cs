@@ -38,7 +38,7 @@ namespace JadooTravel.Services.FeatureService
             await _featureCollection.DeleteOneAsync(x => x.FeatureId == id);
         }
 
-        public async Task<List<ResultFeatureDto>> GetAllFeatureasync()
+        public async Task<List<ResultFeatureDto>> GetAllFeatureAsync()
         {
            var value =await _featureCollection.Find(x=>true).ToListAsync();
             return _mapper.Map<List<ResultFeatureDto>>(value);

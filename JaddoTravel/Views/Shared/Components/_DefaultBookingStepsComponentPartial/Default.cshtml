@@ -1,73 +1,137 @@
-﻿@*
+﻿@using JadooTravel
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
+
+@*
     default Booking Steps Component Partial View
 *@
 
 <section id="booking">
+
     <div class="container">
         <div class="row align-items-center">
-            <!-- Left side: Booking Steps -->
+
+            <!-- SOL TARAF – 3 ADIM -->
             <div class="col-lg-6">
                 <div class="mb-4 text-start">
-                    <h5 class="text-secondary">Kolay ve Hızlı Rezervasyon </h5>
-                    <h3 class="fs-xl-10 fs-lg-8 fs-7 fw-bold font-cursive text-capitalize">3 Adımda Rezervasyonunuzu Oluşturun</h3>
+                    <h5 class="text-secondary">
+                        @Localizer["BookingSectionTitle"]
+                    </h5>
+                    <h3 class="fs-xl-10 fs-lg-8 fs-7 fw-bold font-cursive text-capitalize">
+                        @Localizer["BookingSectionSubtitle"]
+                    </h3>
                 </div>
+
+                <!-- 1. Adım -->
                 <div class="d-flex align-items-start mb-5">
                     <div class="bg-primary me-sm-4 me-3 p-3" style="border-radius: 13px">
                         <img src="/public/assets/img/steps/selection.svg" width="22" alt="steps" />
                     </div>
                     <div class="flex-1">
-                        <h5 class="text-secondary fw-bold fs-0">Hedef Seçin</h5>
-                        <p>Choose your favourite place. No matter <br class="d-none d-sm-block"> where you travel inside the World.</p>
+                        <h5 class="text-secondary fw-bold fs-0">
+                            @Localizer["BookingStep1Title"]
+                        </h5>
+                        <p>
+                            @Localizer["BookingStep1Text"]
+                        </p>
                     </div>
                 </div>
+
+                <!-- 2. Adım -->
                 <div class="d-flex align-items-start mb-5">
                     <div class="bg-danger me-sm-4 me-3 p-3" style="border-radius: 13px">
                         <img src="/public/assets/img/steps/water-sport.svg" width="22" alt="steps" />
                     </div>
                     <div class="flex-1">
-                        <h5 class="text-secondary fw-bold fs-0">Ödeme Yapın</h5>
-                        <p>After find your perfect spot, make your <br class="d-none d-sm-block"> payment and get ready to travel.</p>
+                        <h5 class="text-secondary fw-bold fs-0">
+                            @Localizer["BookingStep2Title"]
+                        </h5>
+                        <p>
+                            @Localizer["BookingStep2Text"]
+                        </p>
                     </div>
                 </div>
+
+                <!-- 3. Adım -->
                 <div class="d-flex align-items-start mb-5">
                     <div class="bg-info me-sm-4 me-3 p-3" style="border-radius: 13px">
                         <img src="/public/assets/img/steps/taxi.svg" width="22" alt="steps" />
                     </div>
                     <div class="flex-1">
-                        <h5 class="text-secondary fw-bold fs-0">Reach Airport on Selected Date</h5>
-                        <p>Lastly, you have to arrive at the airport <br class="d-none d-sm-block"> on time and enjoy the vacation.</p>
+                        <h5 class="text-secondary fw-bold fs-0">
+                            @Localizer["BookingStep3Title"]
+                        </h5>
+                        <p>
+                            @Localizer["BookingStep3Text"]
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <!-- Right side: Reservation Form -->
+            <!-- SAĞ TARAF – Hızlı Rezervasyon Formu -->
             <div class="col-lg-6 d-flex justify-content-center align-items-start">
-                <div class="card shadow-lg border-info" style="width: 100%; max-width: 500px;">
-                    <div class="card-header bg-info text-white text-center">
-                        <h5 class="mb-0">Rezervasyon Formu</h5>
-                    </div>
-                    <div class="card-body">
-                        <form method="post">
-                            <div class="mb-3">
-                                <input type="text" class="form-control" placeholder="Adınız Soyadınız" required />
-                            </div>
-                            <div class="mb-3">
-                                <input type="tel" class="form-control" placeholder="Telefon Numaranız" required />
-                            </div>
-                            <div class="mb-3">
-                                <input type="email" class="form-control" placeholder="Email Adresiniz" required />
-                            </div>
-                            <div class="mb-3">
-                                <textarea rows="3" class="form-control" placeholder="Varsa eklemek istedikleriniz"></textarea>
-                            </div>
-                            <div class="d-grid">
-                                <button type="submit" class="btn btn-info">Rezervasyon Yap</button>
-                            </div>
-                        </form>
-                    </div>
+                <div class="card shadow-sm p-4 w-100" style="max-width:420px; border-radius:16px;">
+                    <h5 class="mb-3 text-secondary">
+                        @Localizer["BookingFormTitle"]
+                    </h5>
+                    <p class="text-muted fs-0 mb-4">
+                        @Localizer["BookingFormSubtitle"]
+                    </p>
+
+                    <form asp-controller="Rezervation" asp-action="CreateRezervation" method="post">
+
+                        <div class="mb-3">
+                            <label class="form-label">
+                                @Localizer["BookingFormNameLabel"]
+                            </label>
+                            <input type="text"
+                                   name="NameSurname"
+                                   class="form-control"
+                                   placeholder="@Localizer["BookingFormNamePlaceholder"]"
+                                   required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">
+                                @Localizer["BookingFormPhoneLabel"]
+                            </label>
+                            <input type="tel"
+                                   name="Phone"
+                                   class="form-control"
+                                   placeholder="@Localizer["BookingFormPhonePlaceholder"]"
+                                   required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">
+                                @Localizer["BookingFormEmailLabel"]
+                            </label>
+                            <input type="email"
+                                   name="Email"
+                                   class="form-control"
+                                   placeholder="@Localizer["BookingFormEmailPlaceholder"]"
+                                   required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">
+                                @Localizer["BookingFormRequestLabel"]
+                            </label>
+                            <textarea name="Description"
+                                      class="form-control"
+                                      rows="3"
+                                      placeholder="@Localizer["BookingFormRequestPlaceholder"]">
+                            </textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">
+                            @Localizer["BookingFormButton"]
+                        </button>
+
+                    </form>
                 </div>
             </div>
 
         </div>
-    </div><!-- end of .container-->
+    </div>
+
 </section>
