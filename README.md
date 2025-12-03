@@ -109,6 +109,9 @@ Kullanıcıların gezinmesini kolaylaştıran dinamik bir arayüz sağlamak, tur
 
 <img width="1876" height="802" alt="a3" src="https://github.com/user-attachments/assets/938a605c-9c1d-47d4-a8ad-ecaa7e4ca395" />
 
+<img width="1872" height="832" alt="2" src="https://github.com/user-attachments/assets/4bf6de42-43aa-4d2a-9f84-46d95cb3b892" />
+
+
 <img width="1875" height="872" alt="a4" src="https://github.com/user-attachments/assets/afd2002d-bc0a-4218-bad7-764137ab46fd" />
 
 <img width="1886" height="876" alt="a5" src="https://github.com/user-attachments/assets/7b8c1c8b-2ced-4595-b138-ab3483bb6e4a" />
